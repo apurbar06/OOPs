@@ -298,7 +298,71 @@ The word polymorphism means having **```many forms.```**
 C++ supports operator overloading and function overloading.
 
 - *Operator Overloading*: The process of making an operator to exhibit different behaviours in different instances is known as operator overloading.
+
+```cpp
+class Complex {
+private:
+    int real, imag;
+  
+public:
+    Complex(int r = 0, int i = 0)
+    {
+        real = r;
+        imag = i;
+    }
+  
+    // This is automatically called when '+' is used with between two Complex objects
+    // This is also known as "operator function". The name of an operator function is always the operator keyword followed 
+    // by the symbol of the operator and operator functions are called when the corresponding operator is used. 
+    Complex operator+(Complex const& obj)
+    {
+        Complex res;
+        res.real = real + obj.real;
+        res.imag = imag + obj.imag;
+        return res;
+    }
+    void print() { cout << real << " + i" << imag << '\n'; }
+};
+  
+int main()
+{
+    Complex c1(10, 5), c2(2, 4);
+    Complex c3 = c1 + c2;
+    c3.print();
+}
+```
+```clike
+Output:  12 + i9
+```
+</br>
+
 - *Function Overloading*: Function overloading is using a single function name to perform different types of tasks.
+
+```cpp
+void add(int a, int b)
+{
+  cout << "sum = " << (a + b);
+}
+ 
+void add(int a, int b, int c)
+{
+    cout << endl << "sum = " << (a + b + c);
+}
+ 
+// Driver code
+int main()
+{
+    add(10, 2);
+    add(5, 6, 4);
+ 
+    return 0;
+}
+```
+```clike
+Output: 
+sum = 12
+sum = 15
+```
 
 Polymorphism is extensively used in implementing inheritance.
 
